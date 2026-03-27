@@ -30,7 +30,8 @@ export default function Home() {
       setLoading(true);
       setError(null);
       const data = await pokemonApi.getAll();
-      setPokemons(data);
+      const sortedData = data.sort((a, b) => a.pokedex - b.pokedex);
+      setPokemons(sortedData);
     } catch (err) {
       setError("Não foi possível carregar os Pokemon. O servidor backend está rodando?");
     } finally {
